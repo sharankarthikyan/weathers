@@ -1,9 +1,14 @@
 "use client";
 
+import InputBar from "@/components/inputbar/InputBar";
+import NavBar from "@/components/navbar/NavBar";
+import SecondBar from "@/components/secondbar/SecondBar";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [openInput, setOpenInput] = useState(false);
+
   function requestLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -87,5 +92,16 @@ export default function Home() {
     }
   }, []);
 
-  return <main className=""></main>;
+  const toggleInput = () => {
+    setOpenInput(!openInput);
+  };
+
+  return (
+    <div>
+      <NavBar toggleInput={toggleInput} />
+      {openInput ? <InputBar /> : ""}
+      <SecondBar />
+      <main className=""></main>
+    </div>
+  );
 }

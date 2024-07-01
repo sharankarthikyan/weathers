@@ -7,7 +7,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext } from "@/context/ThemeProvider";
 import { useMediaQuery } from "react-responsive";
 
-export default function NavBar() {
+export default function NavBar({ toggleInput }) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
   const isSmallDisplay = useMediaQuery({ maxWidth: 640 });
@@ -116,11 +116,27 @@ export default function NavBar() {
         </Link>
       </div>
       <div className="w-[50%] justify-center navbar-center">
-        <div className="flex justify-between btn btn-ghost">
-          <div className="flex items-center">
+        <div
+          onClick={() => toggleInput(true)}
+          className="flex justify-between btn btn-ghost"
+        >
+          <div className="flex items-center md:hidden lg:hidden">
+            <LocationMarkerIcon width="15" height="15" />
+          </div>
+          <div
+            className="hidden sm:hidden 
+          md:flex md:items-center
+          lg:flex lg:items-center"
+          >
             <LocationMarkerIcon width="20" height="20" />
           </div>
-          <div className="font-dela-gothic-one text-[1.6rem]">Chennai</div>
+          <div
+            className="font-dela-gothic-one text-[1rem]
+          md:text-[1.6rem]
+          lg:text-[1.6rem]"
+          >
+            Chennai
+          </div>
         </div>
       </div>
       <div className="w-[25%] justify-end"></div>

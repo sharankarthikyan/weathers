@@ -167,7 +167,11 @@ export default function NavBar({ toggleInput }) {
       </div>
       <div className="w-[50%] justify-center navbar-center">
         {isLoading ? (
-          <div className="skeleton w-[20rem] h-[3rem]"></div>
+          <div
+            className="skeleton w-[12rem] h-[3rem]
+          md:w-[20rem] md:h-[3rem]
+          lg:w-[20rem] lg:h-[3rem]"
+          ></div>
         ) : (
           <div
             onClick={() => toggleInput(true)}

@@ -7,8 +7,8 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext } from "@/context/ThemeProvider";
 import { useMediaQuery } from "react-responsive";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { selectPublicIpAddress } from "@/store/publicIPAddress/publicIPAddressState";
 import axios from "axios";
+import { fetchLocationData } from "@/store/locationState";
 
 export default function NavBar({ toggleInput }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +18,9 @@ export default function NavBar({ toggleInput }) {
   const isMediumDisplay = useMediaQuery({ maxWidth: 768 });
   const isLargeDisplay = useMediaQuery({ maxWidth: 1024 });
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
+  const locationData = useAppSelector((state) => state.location.locationData);
+  const isLoading = useAppSelector((state) => state.location.isLoading);
+  const error = useAppSelector((state) => state.location.error);
   const { theme, changeTheme } = useContext(ThemeContext);
 
   const toggleMenu = () => {
@@ -60,44 +63,19 @@ export default function NavBar({ toggleInput }) {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          axios
-            .get(
-              `https://api.open-meteo.com/v1/forecast?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`
-            )
-            .then((response) => {
-              console.log(response.data);
-            });
+          dispatch(
+            fetchLocationData({
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude,
+            })
+          );
         },
         (error) => {
-          axios.get("https://api.ipify.org?format=json").then((response) => {
-            const data = response.data;
-            axios.get(`http://ip-api.com/json/${data.ip}`).then((response) => {
-              const data = response.data;
-              axios
-                .get(
-                  `https://api.open-meteo.com/v1/forecast?latitude=${data.lat}&longitude=${data.lon}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`
-                )
-                .then((response) => {
-                  console.log(response.data);
-                });
-            });
-          });
+          dispatch(fetchLocationData({ latitude: null, longitude: null }));
         }
       );
     } else {
-      axios.get("https://api.ipify.org?format=json").then((response) => {
-        const data = response.data;
-        axios.get(`http://ip-api.com/json/${data.ip}`).then((response) => {
-          const data = response.data;
-          axios
-            .get(
-              `https://api.open-meteo.com/v1/forecast?latitude=${data.lat}&longitude=${data.lon}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`
-            )
-            .then((response) => {
-              console.log(response.data);
-            });
-        });
-      });
+      dispatch(fetchLocationData({ latitude: null, longitude: null }));
     }
   }
 
@@ -111,8 +89,6 @@ export default function NavBar({ toggleInput }) {
     };
   }, []);
 
-  console.log(useAppSelector((state) => state.publicIPAddress));
-
   useEffect(() => {
     if ("permissions" in navigator) {
       navigator.permissions
@@ -120,41 +96,26 @@ export default function NavBar({ toggleInput }) {
         .then((permissionStatus) => {
           if (permissionStatus.state === "granted") {
             navigator.geolocation.getCurrentPosition((position) => {
-              axios
-                .get(
-                  `https://api.open-meteo.com/v1/forecast?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`
-                )
-                .then((response) => {
-                  console.log(response.data);
-                });
+              dispatch(
+                fetchLocationData({
+                  latitude: position.coords.latitude,
+                  longitude: position.coords.longitude,
+                })
+              );
             });
           } else if (permissionStatus.state === "prompt") {
             requestLocation();
           } else if (permissionStatus.state === "denied") {
-            axios.get("https://api.ipify.org?format=json").then((response) => {
-              const data = response.data;
-              axios
-                .get(`http://ip-api.com/json/${data.ip}`)
-                .then((response) => {
-                  const data = response.data;
-                  axios
-                    .get(
-                      `https://api.open-meteo.com/v1/forecast?latitude=${data.lat}&longitude=${data.lon}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`
-                    )
-                    .then((response) => {
-                      console.log(response.data);
-                    });
-                });
-            });
+            dispatch(fetchLocationData({ latitude: null, longitude: null }));
           }
         });
     }
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="navbar bg-base-100 sticky border-b border-[#ffffff3f]">
       <div className="w-[25%] justify-start">
-        <div className="dropdown">
+        {/* <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -193,7 +154,7 @@ export default function NavBar({ toggleInput }) {
               <a>Item 3</a>
             </li>
           </ul>
-        </div>
+        </div> */}
         <Link
           href="/"
           className="font-red-rose uppercase
@@ -205,28 +166,32 @@ export default function NavBar({ toggleInput }) {
         </Link>
       </div>
       <div className="w-[50%] justify-center navbar-center">
-        <div
-          onClick={() => toggleInput(true)}
-          className="flex justify-between btn btn-ghost"
-        >
-          <div className="flex items-center md:hidden lg:hidden">
-            <LocationMarkerIcon width="15" height="15" />
-          </div>
+        {isLoading ? (
+          <div className="skeleton w-[20rem] h-[3rem]"></div>
+        ) : (
           <div
-            className="hidden sm:hidden 
+            onClick={() => toggleInput(true)}
+            className="flex justify-between btn btn-ghost"
+          >
+            <div className="flex items-center md:hidden lg:hidden">
+              <LocationMarkerIcon width="15" height="15" />
+            </div>
+            <div
+              className="hidden sm:hidden 
           md:flex md:items-center
           lg:flex lg:items-center"
-          >
-            <LocationMarkerIcon width="20" height="20" />
-          </div>
-          <div
-            className="font-dela-gothic-one text-[1rem]
+            >
+              <LocationMarkerIcon width="20" height="20" />
+            </div>
+            <div
+              className="font-dela-gothic-one text-[1rem]
           md:text-[1.6rem]
           lg:text-[1.6rem]"
-          >
-            Chennai
+            >
+              {locationData ? locationData.city : "Unknown"}
+            </div>
           </div>
-        </div>
+        )}
       </div>
       <div className="w-[25%] justify-end"></div>
     </div>

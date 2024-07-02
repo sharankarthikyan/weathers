@@ -10,8 +10,8 @@ export default function InputBar() {
       />
       <div
         className="w-[20%] border border-[#ffffff3f] btn btn-square uppercase font-dela-gothic-one p-4
-      md:h-[4rem] md:text-[1.6rem] 
-      lg:h-[4rem] lg:text-[1.6rem]"
+      md:h-[4rem] md:text-[1.2rem] 
+      lg:h-[4rem] lg:text-[1.2rem]"
       >
         Search
       </div>

@@ -21,7 +21,7 @@ export default function SecondBar() {
         md:btn md:btn-ghost md:text-[1.4rem] md:font-bold
         lg:btn lg:btn-ghost lg:text-[1.4rem] lg:font-bold"
         >
-          10 day
+          10 days
         </div>
         <div
           className="btn btn-ghost text-[1rem] font-bold

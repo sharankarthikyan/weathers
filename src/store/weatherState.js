@@ -7,7 +7,7 @@ export const fetchWeatherData = createAsyncThunk(
   async ({ latitude, longitude }, thunkAPI) => {
     try {
       const response = await axios.get(
-        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`
+        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,precipitation,windspeed_10m&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset&current_weather=true&temperature_unit=celsius&wind_speed_unit=kmh&precipitation_unit=mm`
       );
       return response.data;
     } catch (error) {

@@ -162,7 +162,7 @@ export default function NavBar({ toggleInput }) {
         md:btn md:btn-ghost md:text-xl
         lg:btn lg:btn-ghost lg:text-3xl"
         >
-          Babble weathers
+          Babble weather
         </Link>
       </div>
       <div className="w-[50%] justify-center navbar-center">

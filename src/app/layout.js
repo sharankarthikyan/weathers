@@ -1,8 +1,8 @@
 // app/layout.js
 
 export const metadata = {
-  title: "Babble Weathers",
-  description: "A Weather forecast web application",
+  title: "Babble Weather",
+  description: "A Weather forecast application",
 };
 
 import "./globals.css";

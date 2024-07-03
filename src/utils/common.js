@@ -56,3 +56,66 @@ export function calculateDayAndNightTemperatures(data) {
     averageNightTemperature: average(nightTemps),
   };
 }
+
+export function findTemperatureTrends(data) {
+  const timePeriods = {
+    morning: { start: 6, end: 12, temperatures: [], precipitations: [] },
+    afternoon: { start: 12, end: 18, temperatures: [], precipitations: [] },
+    evening: { start: 18, end: 24, temperatures: [], precipitations: [] },
+    night: { start: 0, end: 6, temperatures: [], precipitations: [] },
+  };
+
+  data.time.forEach((time, index) => {
+    const hour = new Date(time).getHours();
+    const temperature = data.temperature_2m[index];
+    const precipitation = data.precipitation_probability[index];
+
+    if (hour >= timePeriods.morning.start && hour < timePeriods.morning.end) {
+      timePeriods.morning.temperatures.push(temperature);
+      timePeriods.morning.precipitations.push(precipitation);
+    } else if (
+      hour >= timePeriods.afternoon.start &&
+      hour < timePeriods.afternoon.end
+    ) {
+      timePeriods.afternoon.temperatures.push(temperature);
+      timePeriods.afternoon.precipitations.push(precipitation);
+    } else if (
+      hour >= timePeriods.evening.start &&
+      hour < timePeriods.evening.end
+    ) {
+      timePeriods.evening.temperatures.push(temperature);
+      timePeriods.evening.precipitations.push(precipitation);
+    } else if (
+      hour >= timePeriods.night.start &&
+      hour < timePeriods.night.end
+    ) {
+      timePeriods.night.temperatures.push(temperature);
+      timePeriods.night.precipitations.push(precipitation);
+    }
+  });
+
+  const calculateTrend = (values) => {
+    if (values.length === 0) return 0;
+    const total = values.reduce((sum, value) => sum + value, 0);
+    return total / values.length;
+  };
+
+  return {
+    morning: {
+      temperature: calculateTrend(timePeriods.morning.temperatures),
+      precipitation: calculateTrend(timePeriods.morning.precipitations),
+    },
+    afternoon: {
+      temperature: calculateTrend(timePeriods.afternoon.temperatures),
+      precipitation: calculateTrend(timePeriods.afternoon.precipitations),
+    },
+    evening: {
+      temperature: calculateTrend(timePeriods.evening.temperatures),
+      precipitation: calculateTrend(timePeriods.evening.precipitations),
+    },
+    night: {
+      temperature: calculateTrend(timePeriods.night.temperatures),
+      precipitation: calculateTrend(timePeriods.night.precipitations),
+    },
+  };
+}

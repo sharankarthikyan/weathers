@@ -22,6 +22,11 @@ export default function NavBar({ toggleInput }) {
   const isLoading = useAppSelector((state) => state.location.isLoading);
   const error = useAppSelector((state) => state.location.error);
   const { theme, changeTheme } = useContext(ThemeContext);
+  const weatherData = useAppSelector((state) => state.weather.weatherData);
+  const isWeatherDataLoading = useAppSelector(
+    (state) => state.weather.isLoading
+  );
+  const errorInWeatherFetch = useAppSelector((state) => state.weather.error);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -197,7 +202,28 @@ export default function NavBar({ toggleInput }) {
           </div>
         )}
       </div>
-      <div className="w-[25%] justify-end"></div>
+      <div className="w-[25%] justify-end">
+        <div className="dropdown dropdown-left dropdown-bottom">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost text-[1.6rem]"
+          >
+            °C
+          </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-lg dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+          >
+            <li>
+              <a className="text-[1.2rem]">°C</a>
+            </li>
+            <li>
+              <a className="text-[1.2rem]">°F</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }

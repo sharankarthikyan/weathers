@@ -119,3 +119,12 @@ export function findTemperatureTrends(data) {
     },
   };
 }
+
+export function calculateDewPoint(temperature, humidity) {
+  const b = 17.62;
+  const c = 243.12;
+  const gamma =
+    (b * temperature) / (c + temperature) + Math.log(humidity / 100);
+  const dewPoint = (c * gamma) / (b - gamma);
+  return dewPoint.toFixed(2); // Rounded to 2 decimal places
+}

@@ -1,7 +1,14 @@
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fetchWeatherData } from "@/store/weatherState";
 import { useEffect } from "react";
-import { WiThermometer, WiWindy } from "weather-icons-react";
+import {
+  WiHumidity,
+  WiMoonAltWaningCrescent6,
+  WiThermometer,
+  WiWindy,
+} from "weather-icons-react";
+
+import Image from "next/image";
 
 export default function TodayDetailsCard() {
   const dispatch = useAppDispatch();
@@ -66,6 +73,20 @@ export default function TodayDetailsCard() {
               </div>
               <div className="border-[.1rem]"></div>
             </div>
+          </div>
+          <div className="flex w-[100%] justify-between text-gray-700 mt-8">
+            <div className="w-[45%]">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <Image src="/dewpoint.png" width="28" height="28" />
+                  <div className="font-source-sans-pro text-[1.8rem] ml-[2rem]">
+                    Dew Point
+                  </div>
+                </div>
+                <div className="font-source-sans-pro text-[1.8rem]">34/28</div>
+              </div>
+              <div className="border-[.1rem]"></div>
+            </div>
             <div className="w-[45%]">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
@@ -77,6 +98,58 @@ export default function TodayDetailsCard() {
                 <div className="font-source-sans-pro text-[1.8rem]">
                   add 34/28
                 </div>
+              </div>
+              <div className="border-[.1rem]"></div>
+            </div>
+          </div>
+          <div className="flex w-[100%] justify-between text-gray-700 mt-8">
+            <div className="w-[45%]">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <Image src="/pressure.png" width="24" height="24" />
+                  <div className="font-source-sans-pro text-[1.8rem] ml-[2rem]">
+                    Pressure
+                  </div>
+                </div>
+                <div className="font-source-sans-pro text-[1.8rem]">34/28</div>
+              </div>
+              <div className="border-[.1rem]"></div>
+            </div>
+            <div className="w-[45%]">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <WiHumidity size={32} />
+                  <div className="font-source-sans-pro text-[1.8rem] ml-[2rem]">
+                    Humidity
+                  </div>
+                </div>
+                <div className="font-source-sans-pro text-[1.8rem]">34/28</div>
+              </div>
+              <div className="border-[.1rem]"></div>
+            </div>
+          </div>
+          <div className="flex w-[100%] justify-between text-gray-700 mt-8">
+            <div className="w-[45%]">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <Image src="/visibility.png" width="24" height="24" />
+                  <div className="font-source-sans-pro text-[1.8rem] ml-[2rem]">
+                    Visibility
+                  </div>
+                </div>
+                <div className="font-source-sans-pro text-[1.8rem]">34/28</div>
+              </div>
+              <div className="border-[.1rem]"></div>
+            </div>
+            <div className="w-[45%]">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <WiMoonAltWaningCrescent6 size={32} />
+                  <div className="font-source-sans-pro text-[1.8rem] ml-[2rem]">
+                    Moon Phase
+                  </div>
+                </div>
+                <div className="font-source-sans-pro text-[1.8rem]">34/28</div>
               </div>
               <div className="border-[.1rem]"></div>
             </div>

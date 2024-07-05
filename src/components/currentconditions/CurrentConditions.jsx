@@ -45,9 +45,9 @@ export default function CurrentConditions() {
           ) : (
             <>
               <div
-                className="font-source-sans-pro text-[#fff] h-[4rem] bg-gray-700 flex items-center rounded-t-2xl border-[1rem] border-gray-700
-      md:font-source-sans-pro md:text-[#fff] md:h-[6rem] md:bg-gray-700 md:flex md:items-center md:rounded-t-2xl md:border-[1rem] md:border-gray-700
-      lg:font-source-sans-pro lg:text-[#fff] lg:h-[6rem] lg:bg-gray-700 lg:flex lg:items-center lg:rounded-t-2xl lg:border-[1rem] lg:border-gray-700"
+                className={`font-source-sans-pro text-[#fff] h-[4rem] bg-gray-800 flex items-center rounded-t-2xl border-[1rem] border-gray-800
+      md:font-source-sans-pro md:text-[#fff] md:h-[6rem] md:bg-gray-800 md:flex md:items-center md:rounded-t-2xl md:border-[1rem] md:border-gray-800
+      lg:font-source-sans-pro lg:text-[#fff] lg:h-[6rem] lg:bg-gray-800 lg:flex lg:items-center lg:rounded-t-2xl lg:border-[1rem] lg:border-gray-800`}
               >
                 <span
                   className="text-2xl font-extrabold capitalize
@@ -56,13 +56,13 @@ export default function CurrentConditions() {
                 >
                   {locationData?.city}, {locationData?.principalSubdivision}
                 </span>
-                <span
+                {/* <span
                   className="text-2xl ml-2 font-light
         md:text-4xl md:ml-2 md:font-light
         lg:text-4xl lg:ml-2 lg:font-light"
                 >
                   as of 20:22 IST
-                </span>
+                </span> */}
               </div>
               <div
                 className="flex px-[2rem] py-[1rem] justify-between
@@ -75,16 +75,14 @@ export default function CurrentConditions() {
           md:font-dela-gothic-one md:text-[7rem]
           lg:font-dela-gothic-one lg:text-[7rem]"
                   >
-                    {parseInt(weatherData?.current_weather?.temperature)}°
+                    {parseInt(weatherData?.current?.temperature_2m)}°
                   </div>
                   <div
                     className="font-dela-gothic-one text-[2rem]
           md:font-dela-gothic-one md:text-[3rem]
           lg:font-dela-gothic-one lg:text-[3rem]"
                   >
-                    {getWeatherDescription(
-                      weatherData?.current_weather?.weathercode
-                    )}
+                    {getWeatherDescription(weatherData?.current?.weather_code)}
                   </div>
                   <div
                     className="font-dela-gothic-one text-[2rem]

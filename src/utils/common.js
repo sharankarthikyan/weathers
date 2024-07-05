@@ -128,3 +128,36 @@ export function calculateDewPoint(temperature, humidity) {
   const dewPoint = (c * gamma) / (b - gamma);
   return dewPoint.toFixed(2); // Rounded to 2 decimal places
 }
+
+export function getCurrentHourApparentTemperature(
+  timeArray,
+  apparentTemperatureArray
+) {
+  // Find index of currentTime in timeArray
+  const index = timeArray.findIndex(
+    (time) => time === getCurrentTimeInFormat()
+  );
+
+  // If index is found, return corresponding apparent temperature
+  if (index !== -1) {
+    return apparentTemperatureArray[index];
+  } else {
+    return null; // Handle case where currentTime is not found in timeArray
+  }
+}
+
+export function getCurrentTimeInFormat() {
+  // Create a new Date object
+  let now = new Date();
+
+  // Get the current year, month, day, and hour
+  let year = now.getFullYear();
+  let month = ("0" + (now.getMonth() + 1)).slice(-2); // Months are zero-indexed, so we add 1
+  let day = ("0" + now.getDate()).slice(-2);
+  let hour = ("0" + now.getHours()).slice(-2);
+
+  // Construct the formatted date-time string
+  let formattedDateTime = `${year}-${month}-${day}T${hour}:00`;
+
+  return formattedDateTime;
+}

@@ -72,7 +72,7 @@ export default function TodayWeatherCard() {
 
   return (
     <>
-      {isLocationDataLoading ? (
+      {isLocationDataLoading || isWeatherDataLoading ? (
         "Loading..."
       ) : (
         <div
@@ -94,29 +94,25 @@ export default function TodayWeatherCard() {
             md:mt-2
             lg:mt-2"
             >
-              {isWeatherDataLoading ? (
-                ""
-              ) : (
-                <>
-                  {temperatureTrends
-                    ? constructTemperatureTrends(temperatureTrends)
-                    : ""}
-                  <div
-                    className="mt-6
+              <>
+                {temperatureTrends
+                  ? constructTemperatureTrends(temperatureTrends)
+                  : ""}
+                <div
+                  className="mt-6
                   md:mt-4
                   lg:mt-4"
-                  >
-                    <Link
-                      href="/hourbyhour"
-                      className="btn btn-secondary text-[.8rem]
+                >
+                  <Link
+                    href="/hourbyhour"
+                    className="btn btn-secondary text-[.8rem]
                       md:btn md:btn-secondary md:text-[1rem]
                       lg:btn lg:btn-secondary lg:text-[1rem]"
-                    >
-                      Next 48 Hours
-                    </Link>
-                  </div>
-                </>
-              )}
+                  >
+                    Next 48 Hours
+                  </Link>
+                </div>
+              </>
             </div>
           </div>
         </div>

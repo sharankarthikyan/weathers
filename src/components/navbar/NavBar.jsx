@@ -162,12 +162,22 @@ export default function NavBar({ toggleInput }) {
         </div> */}
         <Link
           href="/"
-          className="font-red-rose uppercase
-        btn btn-ghost text-xl
-        md:btn md:btn-ghost md:text-xl
-        lg:btn lg:btn-ghost lg:text-3xl"
+          className="font-red-rose uppercase 
+        btn btn-ghost text-xl hidden
+        md:btn md:btn-ghost md:text-xl md:block
+        lg:btn lg:btn-ghost lg:text-3xl lg:block"
         >
           Babble weather
+        </Link>
+
+        <Link
+          href="/"
+          className="font-red-rose uppercase 
+        btn btn-ghost text-xl
+        md:btn md:btn-ghost md:text-xl md:hidden
+        lg:btn lg:btn-ghost lg:text-3xl lg:hidden"
+        >
+          BW
         </Link>
       </div>
       <div className="w-[50%] justify-center navbar-center">
@@ -207,7 +217,9 @@ export default function NavBar({ toggleInput }) {
           <div
             tabIndex={0}
             role="button"
-            className="btn btn-ghost text-[1.6rem]"
+            className="btn btn-ghost text-[1.2rem]
+            md:btn md:btn-ghost md:text-[1.6rem]
+            lg:btn lg:btn-ghost lg:text-[1.6rem]"
           >
             °C
           </div>

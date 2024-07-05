@@ -57,7 +57,7 @@ export function calculateDayAndNightTemperatures(data) {
   };
 }
 
-export function findTemperatureTrends(data) {
+export function findTemperatureTrends(time, temperature, precipitation) {
   const timePeriods = {
     morning: { start: 6, end: 12, temperatures: [], precipitations: [] },
     afternoon: { start: 12, end: 18, temperatures: [], precipitations: [] },
@@ -65,32 +65,32 @@ export function findTemperatureTrends(data) {
     night: { start: 0, end: 6, temperatures: [], precipitations: [] },
   };
 
-  data.time.forEach((time, index) => {
+  time.forEach((time, index) => {
     const hour = new Date(time).getHours();
-    const temperature = data.temperature_2m[index];
-    const precipitation = data.precipitation_probability[index];
+    const temp = temperature[index];
+    const prec = precipitation[index];
 
     if (hour >= timePeriods.morning.start && hour < timePeriods.morning.end) {
-      timePeriods.morning.temperatures.push(temperature);
-      timePeriods.morning.precipitations.push(precipitation);
+      timePeriods.morning.temperatures.push(temp);
+      timePeriods.morning.precipitations.push(prec);
     } else if (
       hour >= timePeriods.afternoon.start &&
       hour < timePeriods.afternoon.end
     ) {
-      timePeriods.afternoon.temperatures.push(temperature);
-      timePeriods.afternoon.precipitations.push(precipitation);
+      timePeriods.afternoon.temperatures.push(temp);
+      timePeriods.afternoon.precipitations.push(prec);
     } else if (
       hour >= timePeriods.evening.start &&
       hour < timePeriods.evening.end
     ) {
-      timePeriods.evening.temperatures.push(temperature);
-      timePeriods.evening.precipitations.push(precipitation);
+      timePeriods.evening.temperatures.push(temp);
+      timePeriods.evening.precipitations.push(prec);
     } else if (
       hour >= timePeriods.night.start &&
       hour < timePeriods.night.end
     ) {
-      timePeriods.night.temperatures.push(temperature);
-      timePeriods.night.precipitations.push(precipitation);
+      timePeriods.night.temperatures.push(temp);
+      timePeriods.night.precipitations.push(prec);
     }
   });
 
@@ -100,24 +100,28 @@ export function findTemperatureTrends(data) {
     return total / values.length;
   };
 
-  return {
-    morning: {
+  return [
+    {
+      key: "morning",
       temperature: calculateTrend(timePeriods.morning.temperatures),
       precipitation: calculateTrend(timePeriods.morning.precipitations),
     },
-    afternoon: {
+    {
+      key: "afternoon",
       temperature: calculateTrend(timePeriods.afternoon.temperatures),
       precipitation: calculateTrend(timePeriods.afternoon.precipitations),
     },
-    evening: {
+    {
+      key: "evening",
       temperature: calculateTrend(timePeriods.evening.temperatures),
       precipitation: calculateTrend(timePeriods.evening.precipitations),
     },
-    night: {
+    {
+      key: "night",
       temperature: calculateTrend(timePeriods.night.temperatures),
       precipitation: calculateTrend(timePeriods.night.precipitations),
     },
-  };
+  ];
 }
 
 export function calculateDewPoint(temperature, humidity) {
@@ -160,4 +164,33 @@ export function getCurrentTimeInFormat() {
   let formattedDateTime = `${year}-${month}-${day}T${hour}:00`;
 
   return formattedDateTime;
+}
+
+export function findNextFiveHrForcast(time, temperature, precipitation) {
+  let currentTime = getCurrentTimeInFormat();
+  let result = [];
+
+  console.log(time);
+  let index = time.indexOf(currentTime);
+
+  result.push({
+    key: "Now",
+    temperature: temperature[index],
+    precipitation: precipitation[index],
+  });
+
+  index++;
+
+  for (let i = index; i < index + 4; i++) {
+    let key = time[i].split("T")[1];
+    result.push({
+      key,
+      temperature: temperature[i],
+      precipitation: precipitation[i],
+    });
+  }
+
+  console.log(result);
+
+  return result;
 }

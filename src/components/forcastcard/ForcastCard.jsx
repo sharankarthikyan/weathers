@@ -4,14 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function ForcastCard({ cardTitle, list, nextLink }) {
+export default function ForcastCard({ cardTitle, list, nextLink, isDaily }) {
   const constructList = (list) => {
     return list.map((list, i) => {
       return (
         <div key={list.key + i}>
           <div className="flex">
             <div
-              className="font-source-sans-pro text-[1.2rem] text-gray-700 flex justify-center items-center capitalize w-[25%]
+              className="font-source-sans-pro text-[1.2rem] text-gray-700 flex justify-center items-center capitalize w-[25%] 
             md:font-source-sans-pro md:text-[2rem] md:text-gray-700 md:flex md:justify-center md:items-center md:capitalize md:w-[25%]
             lg:font-source-sans-pro lg:text-[2rem] lg:text-gray-700 lg:flex lg:justify-center lg:items-center lg:capitalize lg:w-[25%]"
             >
@@ -22,7 +22,12 @@ export default function ForcastCard({ cardTitle, list, nextLink }) {
             md:font-source-sans-pro md:text-[3.6rem] md:text-gray-700 md:w-[25%] md:flex md:justify-center md:items-center
             lg:font-source-sans-pro lg:text-[4rem] lg:text-gray-700 lg:w-[25%] lg:flex lg:justify-center lg:items-center"
             >
-              {Math.round(list.temperature)}°
+              {isDaily
+                ? Math.round(list.temperature_max) +
+                  "°/" +
+                  Math.round(list.temperature_min) +
+                  "°"
+                : Math.round(list.temperature) + "°"}
             </div>
             <div
               className="w-[25%] flex justify-center items-center

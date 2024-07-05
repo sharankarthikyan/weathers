@@ -5,11 +5,16 @@ import CurrentConditions from "@/components/currentconditions/CurrentConditions"
 import ForcastCard from "@/components/forcastcard/ForcastCard";
 import TodayDetailsCard from "@/components/tadaydetailscard/TodayDetailsCard";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { findNextFiveHrForcast, findTemperatureTrends } from "@/utils/common";
+import {
+  findFiveDaysForcast,
+  findFiveHrForcast,
+  findTemperatureTrends,
+} from "@/utils/common";
 
 export default function Home() {
   const [temperatureTrends, setTemperatureTrends] = useState([]);
-  const [nextFiveHrForcast, setNextFiveHrForcast] = useState([]);
+  const [fiveHrForcast, setFiveHrForcast] = useState([]);
+  const [fiveDaysForcast, setFiveDaysForcast] = useState([]);
 
   const dispatch = useAppDispatch();
   const locationData = useAppSelector((state) => state.location.locationData);
@@ -32,11 +37,20 @@ export default function Home() {
           weatherData?.hourly?.precipitation_probability
         )
       );
-      setNextFiveHrForcast(
-        findNextFiveHrForcast(
+      setFiveHrForcast(
+        findFiveHrForcast(
           weatherData?.hourly?.time,
           weatherData?.hourly?.temperature_2m,
           weatherData?.hourly?.precipitation_probability
+        )
+      );
+
+      setFiveDaysForcast(
+        findFiveDaysForcast(
+          weatherData?.daily?.time,
+          weatherData?.daily?.temperature_2m_min,
+          weatherData?.daily?.temperature_2m_max,
+          weatherData?.daily?.precipitation_probability_max
         )
       );
     }
@@ -83,8 +97,24 @@ export default function Home() {
         ) : (
           <ForcastCard
             cardTitle={`Hourly Forecast`}
-            list={nextFiveHrForcast}
+            list={fiveHrForcast}
             nextLink="Next 48 hours"
+          />
+        )}
+      </div>
+      <div
+        className="mt-4 w-[90%] flex justify-center
+      md:mt-4 md:w-[60%] md:flex md:justify-center
+      lg:mt-4 lg:w-[60%] lg:flex lg:justify-center"
+      >
+        {isLocationDataLoading || isWeatherDataLoading ? (
+          ""
+        ) : (
+          <ForcastCard
+            cardTitle={`Daily Forecast`}
+            list={fiveDaysForcast}
+            nextLink="Next 10 days"
+            isDaily={true}
           />
         )}
       </div>

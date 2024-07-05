@@ -166,11 +166,9 @@ export function getCurrentTimeInFormat() {
   return formattedDateTime;
 }
 
-export function findNextFiveHrForcast(time, temperature, precipitation) {
+export function findFiveHrForcast(time, temperature, precipitation) {
   let currentTime = getCurrentTimeInFormat();
   let result = [];
-
-  console.log(time);
   let index = time.indexOf(currentTime);
 
   result.push({
@@ -186,6 +184,29 @@ export function findNextFiveHrForcast(time, temperature, precipitation) {
     result.push({
       key,
       temperature: temperature[i],
+      precipitation: precipitation[i],
+    });
+  }
+  return result;
+}
+
+export function findFiveDaysForcast(
+  time,
+  temperatureMin,
+  temperatureMax,
+  precipitation
+) {
+  let result = [];
+
+  for (let i = 0; i < 5; i++) {
+    let day = new Date(time[i])
+      .toLocaleDateString("us", { weekday: "long" })
+      .slice(0, 3);
+    let dayNum = new Date(time[i]).getDay();
+    result.push({
+      key: day + " " + dayNum,
+      temperature_min: temperatureMin[i],
+      temperature_max: temperatureMax[i],
       precipitation: precipitation[i],
     });
   }

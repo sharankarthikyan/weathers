@@ -71,21 +71,21 @@ export default function CurrentConditions() {
               >
                 <div className="flex flex-col justify-around">
                   <div
-                    className="font-dela-gothic-one text-[5rem]
+                    className="font-dela-gothic-one text-[5rem] text-gray-900
           md:font-dela-gothic-one md:text-[7rem]
           lg:font-dela-gothic-one lg:text-[7rem]"
                   >
                     {parseInt(weatherData?.current?.temperature_2m)}°
                   </div>
                   <div
-                    className="font-dela-gothic-one text-[2rem]
+                    className="font-dela-gothic-one text-[2rem] text-gray-700
           md:font-dela-gothic-one md:text-[3rem]
           lg:font-dela-gothic-one lg:text-[3rem]"
                   >
                     {getWeatherDescription(weatherData?.current?.weather_code)}
                   </div>
                   <div
-                    className="font-dela-gothic-one text-[2rem]
+                    className="font-dela-gothic-one text-[2rem] text-gray-700
           md:font-dela-gothic-one md:text-[3rem]
           lg:font-dela-gothic-one lg:text-[3rem]"
                   >

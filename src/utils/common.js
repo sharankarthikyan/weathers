@@ -202,7 +202,7 @@ export function findFiveDaysForcast(
     let day = new Date(time[i])
       .toLocaleDateString("us", { weekday: "long" })
       .slice(0, 3);
-    let dayNum = new Date(time[i]).getDay();
+    let dayNum = new Date(time[i]).getDate();
     result.push({
       key: day + " " + dayNum,
       temperature_min: temperatureMin[i],
@@ -210,8 +210,6 @@ export function findFiveDaysForcast(
       precipitation: precipitation[i],
     });
   }
-
-  console.log(result);
 
   return result;
 }

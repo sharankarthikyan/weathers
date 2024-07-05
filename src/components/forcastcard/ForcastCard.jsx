@@ -4,7 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function ForcastCard({ cardTitle, list, nextLink, isDaily }) {
+export default function ForcastCard({
+  cardTitle,
+  list,
+  nextLink,
+  btnLink,
+  isDaily,
+}) {
   const constructList = (list) => {
     return list.map((list, i) => {
       return (
@@ -79,7 +85,7 @@ export default function ForcastCard({ cardTitle, list, nextLink, isDaily }) {
                   lg:mt-4"
               >
                 <Link
-                  href="/hourbyhour"
+                  href={btnLink}
                   className="btn btn-secondary text-[.8rem]
                       md:btn md:btn-secondary md:text-[1rem]
                       lg:btn lg:btn-secondary lg:text-[1rem]"

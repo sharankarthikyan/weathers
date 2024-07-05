@@ -76,6 +76,7 @@ export default function Home() {
           <ForcastCard
             cardTitle={`Today's Forcast for ${locationData?.city}, ${locationData?.principalSubdivision}`}
             list={temperatureTrends}
+            btnLink="/hourbyhour"
             nextLink="Next 48 hours"
           />
         )}
@@ -98,6 +99,7 @@ export default function Home() {
           <ForcastCard
             cardTitle={`Hourly Forecast`}
             list={fiveHrForcast}
+            btnLink="/hourbyhour"
             nextLink="Next 48 hours"
           />
         )}
@@ -114,6 +116,7 @@ export default function Home() {
             cardTitle={`Daily Forecast`}
             list={fiveDaysForcast}
             nextLink="Next 10 days"
+            btnLink="/daily"
             isDaily={true}
           />
         )}

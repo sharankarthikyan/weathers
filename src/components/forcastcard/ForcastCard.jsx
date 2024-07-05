@@ -1,8 +1,9 @@
-import { useAppDispatch } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { findTemperatureTrends } from "@/utils/common";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import SkeletonCard from "../skeletoncard/SkeletonCard";
 
 export default function ForcastCard({
   cardTitle,

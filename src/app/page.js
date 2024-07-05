@@ -10,6 +10,7 @@ import {
   findFiveHrForcast,
   findTemperatureTrends,
 } from "@/utils/common";
+import SkeletonCard from "@/components/skeletoncard/SkeletonCard";
 
 export default function Home() {
   const [temperatureTrends, setTemperatureTrends] = useState([]);
@@ -63,7 +64,11 @@ export default function Home() {
       md:mt-4 md:w-[60%] md:flex md:justify-center
       lg:mt-4 lg:w-[60%] lg:flex lg:justify-center"
       >
-        <CurrentConditions />
+        {isLocationDataLoading || isWeatherDataLoading ? (
+          <SkeletonCard />
+        ) : (
+          <CurrentConditions />
+        )}
       </div>
       <div
         className="mt-4 w-[90%] flex justify-center
@@ -71,7 +76,7 @@ export default function Home() {
       lg:mt-4 lg:w-[60%] lg:flex lg:justify-center"
       >
         {isLocationDataLoading || isWeatherDataLoading ? (
-          ""
+          <SkeletonCard />
         ) : (
           <ForcastCard
             cardTitle={`Today's Forcast for ${locationData?.city}, ${locationData?.principalSubdivision}`}
@@ -86,7 +91,11 @@ export default function Home() {
       md:mt-4 md:w-[60%] md:flex md:justify-center
       lg:mt-4 lg:w-[60%] lg:flex lg:justify-center"
       >
-        <TodayDetailsCard />
+        {isLocationDataLoading || isWeatherDataLoading ? (
+          <SkeletonCard />
+        ) : (
+          <TodayDetailsCard />
+        )}
       </div>
       <div
         className="mt-4 w-[90%] flex justify-center
@@ -94,7 +103,7 @@ export default function Home() {
       lg:mt-4 lg:w-[60%] lg:flex lg:justify-center"
       >
         {isLocationDataLoading || isWeatherDataLoading ? (
-          ""
+          <SkeletonCard />
         ) : (
           <ForcastCard
             cardTitle={`Hourly Forecast`}
@@ -110,7 +119,7 @@ export default function Home() {
       lg:mt-4 lg:w-[60%] lg:flex lg:justify-center"
       >
         {isLocationDataLoading || isWeatherDataLoading ? (
-          ""
+          <SkeletonCard />
         ) : (
           <ForcastCard
             cardTitle={`Daily Forecast`}

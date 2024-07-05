@@ -69,7 +69,7 @@ export default function TodayDetailsCard() {
               lg:flex lg:w-[100%] lg:justify-between"
               >
                 <div
-                  className="flex flex-col pl-[2rem] pt-[2rem]
+                  className="flex flex-col pl-[1rem] pt-[.6rem]
                 md:flex md:flex-col md:pl-[2rem] md:pt-[2rem]
                 lg:flex lg:flex-col lg:pl-[2rem] lg:pt-[2rem]"
                 >

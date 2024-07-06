@@ -1,6 +1,13 @@
+import Link from "next/link";
 import WeatherListItem from "./weatherlistitem/WeatherListItem";
 
-export default function Weather({ cardTitle, location, list }) {
+export default function Weather({
+  cardTitle,
+  location,
+  list,
+  btnLink,
+  btnText,
+}) {
   let day = null;
 
   const checkCurrAndPrevHrOnSameDay = (dayOrTime) => {
@@ -104,6 +111,19 @@ export default function Weather({ cardTitle, location, list }) {
         >
           {constructListItem()}
         </div>
+        {btnLink ? (
+          <div
+            className="pt-[1rem] pl-[1rem]
+        md:pt-[1rem] md:pl-[1rem]
+        lg:pt-[1rem] lg:pl-[1rem"
+          >
+            <Link href={btnLink} className="btn btn-secondary text-[1rem]">
+              {btnText}
+            </Link>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

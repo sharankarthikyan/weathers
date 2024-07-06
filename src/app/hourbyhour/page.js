@@ -41,6 +41,8 @@ export default function Home() {
                   weatherData?.hourly?.wind_speed_10m,
                   weatherData?.hourly?.relative_humidity_2m
                 )}
+                btnLink="/daily"
+                btnText="10-Day weather"
               />
             ) : (
               ""

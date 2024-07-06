@@ -44,7 +44,13 @@ export default function ForcastCard({
             md:font-source-sans-pro md:text-[2rem] md:text-gray-700 md:flex md:font-extrabold md:w-[25%] md:justify-center md:items-center
             lg:font-source-sans-pro lg:text-[2rem] lg:text-gray-700 lg:flex lg:font-extrabold lg:w-[25%] lg:justify-center lg:items-center"
             >
-              <Image src="/drop.svg" width="8" height="8" className="mr-1" />
+              <Image
+                src="/drop.svg"
+                width="8"
+                height="8"
+                className="mr-1"
+                alt="rain drop"
+              />
               <div>{parseInt(list.precipitation)}%</div>
             </div>
           </div>

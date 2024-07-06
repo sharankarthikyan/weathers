@@ -137,9 +137,19 @@ export default function TodayDetailsCard() {
                       lg:w-[20%]"
                     >
                       {isSmallDisplay ? (
-                        <Image src="/visibility.png" width="18" height="18" />
+                        <Image
+                          src="/visibility.png"
+                          width="18"
+                          height="18"
+                          alt="visibility"
+                        />
                       ) : (
-                        <Image src="/visibility.png" width="24" height="24" />
+                        <Image
+                          src="/visibility.png"
+                          width="24"
+                          height="24"
+                          alt="visibility"
+                        />
                       )}
                     </div>
 
@@ -184,9 +194,19 @@ export default function TodayDetailsCard() {
                       lg:w-[20%]"
                     >
                       {isSmallDisplay ? (
-                        <Image src="/dewpoint.png" width="18" height="18" />
+                        <Image
+                          src="/dewpoint.png"
+                          width="18"
+                          height="18"
+                          alt="dewpoint"
+                        />
                       ) : (
-                        <Image src="/dewpoint.png" width="28" height="28" />
+                        <Image
+                          src="/dewpoint.png"
+                          width="28"
+                          height="28"
+                          alt="dewpoint"
+                        />
                       )}
                     </div>
                     <div
@@ -270,9 +290,19 @@ export default function TodayDetailsCard() {
                       lg:w-[20%]"
                     >
                       {isSmallDisplay ? (
-                        <Image src="/pressure.png" width="18" height="18" />
+                        <Image
+                          src="/pressure.png"
+                          width="18"
+                          height="18"
+                          alt="pressure"
+                        />
                       ) : (
-                        <Image src="/pressure.png" width="24" height="24" />
+                        <Image
+                          src="/pressure.png"
+                          width="24"
+                          height="24"
+                          alt="pressure"
+                        />
                       )}
                     </div>
                     <div

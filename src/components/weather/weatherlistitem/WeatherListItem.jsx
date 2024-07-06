@@ -307,9 +307,21 @@ export default function WeatherListItem({
         </div>
         <div className="w-[15%] flex">
           {isSmallDisplay ? (
-            <Image src="/drop.svg" width="6" height="6" className="mr-1" />
+            <Image
+              src="/drop.svg"
+              width="6"
+              height="6"
+              className="mr-1"
+              alt="rain drop"
+            />
           ) : (
-            <Image src="/drop.svg" width="8" height="8" className="mr-1" />
+            <Image
+              src="/drop.svg"
+              width="8"
+              height="8"
+              className="mr-1"
+              alt="rain drop"
+            />
           )}
 
           <div

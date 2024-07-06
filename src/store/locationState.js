@@ -30,7 +30,11 @@ const locationSlice = createSlice({
     isLoading: true,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    setLocationData(state, action) {
+      state.locationData = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchLocationData.pending, (state) => {
@@ -48,4 +52,5 @@ const locationSlice = createSlice({
   },
 });
 
+export const { setLocationData } = locationSlice.actions;
 export default locationSlice.reducer;

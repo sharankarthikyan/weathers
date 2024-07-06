@@ -1,4 +1,24 @@
+import { useAppDispatch } from "@/store/hooks";
+import { fetchSearchData } from "@/store/searchState";
+import SuggestionMenu from "./suggestionmenu/SuggestionMenu";
+import { debounce } from "@/utils/common";
+import { useCallback } from "react";
+
 export default function InputBar() {
+  const dispatch = useAppDispatch();
+
+  const handleInputChange = (e) => {
+    const value = e.target.value.toLowerCase();
+    if (value && value.length > 2) {
+      dispatch(fetchSearchData({ query: value }));
+    }
+  };
+
+  const debouncedHandleInputChange = useCallback(
+    debounce(handleInputChange, 300), // Adjust the delay as needed
+    []
+  );
+
   return (
     <div className="w-[100%] flex justify-between">
       <input
@@ -7,6 +27,7 @@ export default function InputBar() {
         lg:h-[4rem] lg:text-[1.6rem] lg:p-4"
         type="text"
         placeholder="Search city or postcode"
+        onChange={debouncedHandleInputChange}
       />
       <div
         className="w-[20%] border border-[#ffffff3f] btn btn-square uppercase font-dela-gothic-one p-4
@@ -15,6 +36,7 @@ export default function InputBar() {
       >
         Search
       </div>
+      <SuggestionMenu />
     </div>
   );
 }

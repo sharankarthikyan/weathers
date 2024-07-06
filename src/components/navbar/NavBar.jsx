@@ -94,14 +94,14 @@ export default function NavBar({ toggleInput }) {
   }, []);
 
   useEffect(() => {
-    if (!isLocationDataLoading && !isWeatherDataLoading && !weatherData)
+    if (!isLocationDataLoading && locationData)
       dispatch(
         fetchWeatherData({
           latitude: locationData.latitude,
           longitude: locationData.longitude,
         })
       );
-  }, [isLocationDataLoading, isWeatherDataLoading]);
+  }, [locationData, dispatch]);
 
   useEffect(() => {
     if ("permissions" in navigator) {
@@ -237,10 +237,14 @@ export default function NavBar({ toggleInput }) {
             className="menu menu-lg dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a className="text-[1.2rem]">°C</a>
+              <Link href="" className="text-[1.2rem]">
+                °C
+              </Link>
             </li>
             <li>
-              <a className="text-[1.2rem]">°F</a>
+              <Link href="" className="text-[1.2rem]">
+                °F
+              </Link>
             </li>
           </ul>
         </div>

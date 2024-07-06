@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import locationReducer from "./locationState";
 import weatherReducer from "./weatherState";
+import searchReducer from "./searchState";
 
 let middleware = [];
 
@@ -15,6 +16,7 @@ export const makeStore = () => {
     reducer: {
       location: locationReducer,
       weather: weatherReducer,
+      search: searchReducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(middleware),

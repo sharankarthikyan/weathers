@@ -38,16 +38,6 @@ export default function SecondBar() {
           10 days
         </Link>
         <Link
-          href="/daily/"
-          className={`btn btn-ghost text-[1rem] font-bold ${
-            pathname == "/daily/" ? "btn-active" : ""
-          }
-        md:btn md:btn-ghost md:text-[1.4rem] md:font-bold
-        lg:btn lg:btn-ghost lg:text-[1.4rem] lg:font-bold`}
-        >
-          Daily
-        </Link>
-        <Link
           href="/monthly/"
           className={`btn btn-ghost text-[1rem] font-bold ${
             pathname == "/monthly/" ? "btn-active" : ""

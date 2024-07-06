@@ -1,12 +1,8 @@
-import { useEffect } from "react";
-
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { fetchWeatherData } from "@/store/weatherState";
+import { useAppSelector } from "@/store/hooks";
 import {
   calculateDayAndNightTemperatures,
   getWeatherDescription,
 } from "@/utils/common";
-import SkeletonCard from "../skeletoncard/SkeletonCard";
 
 export default function CurrentConditions() {
   const locationData = useAppSelector((state) => state.location.locationData);

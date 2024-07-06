@@ -1,9 +1,5 @@
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { findTemperatureTrends } from "@/utils/common";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import SkeletonCard from "../skeletoncard/SkeletonCard";
 
 export default function ForcastCard({
   cardTitle,
@@ -60,7 +56,8 @@ export default function ForcastCard({
 
   return (
     <>
-      <div
+      <Link
+        href={btnLink}
         className="w-[90%] bg-white rounded-2xl box-border p-[1rem]
     md:w-[90%] md:bg-white md:rounded-2xl md:box-border md:p-[1rem]
     lg:w-[90%] lg:bg-white lg:rounded-2xl lg:box-border lg:p-[1rem]"
@@ -97,7 +94,7 @@ export default function ForcastCard({
             </>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 }

@@ -17,7 +17,6 @@ export default function Home() {
   const [fiveHrForcast, setFiveHrForcast] = useState([]);
   const [fiveDaysForcast, setFiveDaysForcast] = useState([]);
 
-  const dispatch = useAppDispatch();
   const locationData = useAppSelector((state) => state.location.locationData);
   const isLocationDataLoading = useAppSelector(
     (state) => state.location.isLoading

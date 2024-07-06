@@ -1,44 +1,14 @@
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { fetchWeatherData } from "@/store/weatherState";
-import { useEffect } from "react";
-import {
-  WiHumidity,
-  WiMoonAltWaningCrescent6,
-  WiThermometer,
-  WiWindy,
-} from "weather-icons-react";
+import { useAppSelector } from "@/store/hooks";
+import { WiHumidity, WiThermometer, WiWindy } from "weather-icons-react";
 
 import Image from "next/image";
 import { getCurrentHourApparentTemperature } from "@/utils/common";
 import { useMediaQuery } from "react-responsive";
-import SkeletonCard from "../skeletoncard/SkeletonCard";
 
 export default function TodayDetailsCard() {
-  const dispatch = useAppDispatch();
   const locationData = useAppSelector((state) => state.location.locationData);
-  const isLocationDataLoading = useAppSelector(
-    (state) => state.location.isLoading
-  );
-
   const weatherData = useAppSelector((state) => state.weather.weatherData);
-  const isWeatherDataLoading = useAppSelector(
-    (state) => state.weather.isLoading
-  );
-  const errorInWeatherFetch = useAppSelector((state) => state.weather.error);
-
   const isSmallDisplay = useMediaQuery({ maxWidth: 640 });
-  const isMediumDisplay = useMediaQuery({ maxWidth: 768 });
-  const isLargeDisplay = useMediaQuery({ maxWidth: 1024 });
-
-  useEffect(() => {
-    if (!isLocationDataLoading && !isWeatherDataLoading && !weatherData)
-      dispatch(
-        fetchWeatherData({
-          latitude: locationData.latitude,
-          longitude: locationData.longitude,
-        })
-      );
-  }, [isLocationDataLoading, isWeatherDataLoading]);
 
   return (
     <>

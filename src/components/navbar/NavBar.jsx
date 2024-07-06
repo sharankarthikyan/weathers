@@ -1,25 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import { LocationMarkerIcon } from "@heroicons/react/outline";
 import { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext } from "@/context/ThemeProvider";
 import { useMediaQuery } from "react-responsive";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import axios from "axios";
 import { fetchLocationData } from "@/store/locationState";
+import { fetchWeatherData } from "@/store/weatherState";
 
 export default function NavBar({ toggleInput }) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
   const dispatch = useAppDispatch();
   const isSmallDisplay = useMediaQuery({ maxWidth: 640 });
-  const isMediumDisplay = useMediaQuery({ maxWidth: 768 });
-  const isLargeDisplay = useMediaQuery({ maxWidth: 1024 });
   const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
   const locationData = useAppSelector((state) => state.location.locationData);
-  const isLoading = useAppSelector((state) => state.location.isLoading);
+  const isLocationDataLoading = useAppSelector(
+    (state) => state.location.isLoading
+  );
   const error = useAppSelector((state) => state.location.error);
   const { theme, changeTheme } = useContext(ThemeContext);
   const weatherData = useAppSelector((state) => state.weather.weatherData);
@@ -93,6 +92,16 @@ export default function NavBar({ toggleInput }) {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  useEffect(() => {
+    if (!isLocationDataLoading && !isWeatherDataLoading && !weatherData)
+      dispatch(
+        fetchWeatherData({
+          latitude: locationData.latitude,
+          longitude: locationData.longitude,
+        })
+      );
+  }, [isLocationDataLoading, isWeatherDataLoading]);
 
   useEffect(() => {
     if ("permissions" in navigator) {
@@ -181,7 +190,7 @@ export default function NavBar({ toggleInput }) {
         </Link>
       </div>
       <div className="w-[50%] justify-center navbar-center">
-        {isLoading ? (
+        {isLocationDataLoading ? (
           <div
             className="skeleton w-[12rem] h-[3rem]
           md:w-[20rem] md:h-[3rem]

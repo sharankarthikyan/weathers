@@ -213,3 +213,31 @@ export function findFiveDaysForcast(
 
   return result;
 }
+
+export function hourlyWeatherForcast(
+  time,
+  temperature,
+  apparentTemperature,
+  weatherCode,
+  precipitationProbability,
+  windSpeed,
+  humidity
+) {
+  let result = [];
+
+  let currentTime = getCurrentTimeInFormat();
+  let index = time.indexOf(currentTime);
+
+  for (let i = index; i < index + 48; i++) {
+    result.push({
+      dayOrTime: time[i],
+      temp: temperature[i],
+      weather: wmoCodeDescriptions[weatherCode[i]],
+      precipitation: precipitationProbability[i],
+      wind: windSpeed[i],
+      subObj: { feelsLike: apparentTemperature[i], humidity: humidity[i] },
+      isHourly: true,
+    });
+  }
+  return result;
+}

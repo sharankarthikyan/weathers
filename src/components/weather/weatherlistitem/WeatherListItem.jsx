@@ -97,9 +97,9 @@ export default function WeatherListItem({
 
   return (
     <div
-      className="w-[100%] collapse collapse-arrow border-base-300 bg-base-200 border-y border-y-neutral rounded-none
-    md:w-[100%] md:collapse md:collapse-arrow md:border-base-300 md:bg-base-200 md:border-y md:border-y-neutral md:rounded-none md:p-[.6rem]
-    lg:w-[100%] lg:collapse lg:collapse-arrow lg:border-base-300 lg:bg-base-200 lg:border-y lg:border-y-neutral lg:rounded-none lg:p-[.6rem]"
+      className="w-[100%] collapse collapse-arrow border-base-300 bg-base-200 border-b border-b-neutral rounded-none
+    md:w-[100%] md:collapse md:collapse-arrow md:border-base-300 md:bg-base-200 md:border-b md:border-b-neutral md:rounded-none md:p-[.6rem]
+    lg:w-[100%] lg:collapse lg:collapse-arrow lg:border-base-300 lg:bg-base-200 lg:border-b lg:border-b-neutral lg:rounded-none lg:p-[.6rem]"
     >
       <input type="checkbox" />
       <div

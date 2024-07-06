@@ -28,9 +28,9 @@ export default function SecondBar() {
           Hourly
         </Link>
         <Link
-          href="/tendays/"
+          href="/tenday/"
           className={`btn btn-ghost text-[1rem] font-bold ${
-            pathname == "/tendays/" ? "btn-active" : ""
+            pathname == "/tenday/" ? "btn-active" : ""
           }
         md:btn md:btn-ghost md:text-[1.4rem] md:font-bold
         lg:btn lg:btn-ghost lg:text-[1.4rem] lg:font-bold`}

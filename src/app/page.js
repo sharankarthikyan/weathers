@@ -124,7 +124,7 @@ export default function Home() {
             cardTitle={`Daily Forecast`}
             list={fiveDaysForcast}
             nextLink="Next 10 days"
-            btnLink="/daily"
+            btnLink="/tenday"
             isDaily={true}
           />
         )}

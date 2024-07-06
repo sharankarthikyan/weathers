@@ -13,7 +13,7 @@ export default function sitemap() {
       priority: 0.8,
     },
     {
-      url: "https://weather.sharankarthikeyan.com/tendays/",
+      url: "https://weather.sharankarthikeyan.com/tenday/",
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.5,

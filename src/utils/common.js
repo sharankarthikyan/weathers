@@ -241,3 +241,39 @@ export function hourlyWeatherForcast(
   }
   return result;
 }
+
+export function tenDayWeatherForcast(
+  time,
+  temperature,
+  temperatureMin,
+  apparentTemperature,
+  weatherCode,
+  precipitationProbability,
+  windSpeed,
+  sunrise,
+  sunset,
+  uvIndexMax,
+  windDirection
+) {
+  let result = [];
+
+  for (let i = 0; i < time.length; i++) {
+    result.push({
+      dayOrTime: time[i],
+      temp: temperature[i],
+      tempMin: temperatureMin[i],
+      weather: wmoCodeDescriptions[weatherCode[i]],
+      precipitation: precipitationProbability[i],
+      wind: windSpeed[i],
+      isHourly: false,
+      subObj: {
+        feelsLike: apparentTemperature[i],
+        sunrise: sunrise[i],
+        sunset: sunset[i],
+        uvIndexMax: uvIndexMax[i],
+        windDirection: windDirection[i],
+      },
+    });
+  }
+  return result;
+}

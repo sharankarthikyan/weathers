@@ -33,16 +33,33 @@ export default function Weather({
     return localeDay + " " + date + " " + localeMonth;
   };
 
+  const constructDateInFormat = (date) => {
+    let day = new Date(date)
+      .toLocaleDateString("us", { weekday: "long" })
+      .slice(0, 3);
+    let dayNum = new Date(date).getDate();
+    return day + " " + dayNum;
+  };
+
   function pad(d) {
     return d < 10 ? "0" + d.toString() : d.toString();
   }
 
   const constructListItem = () => {
     return list.map(
-      ({ dayOrTime, temp, weather, precipitation, wind, subObj, isHourly }) => {
+      ({
+        dayOrTime,
+        temp,
+        weather,
+        precipitation,
+        wind,
+        subObj,
+        isHourly,
+        tempMin,
+      }) => {
         return (
           <>
-            {checkCurrAndPrevHrOnSameDay(dayOrTime) ? (
+            {!isHourly || checkCurrAndPrevHrOnSameDay(dayOrTime) ? (
               ""
             ) : (
               <div
@@ -55,9 +72,11 @@ export default function Weather({
             )}
             <WeatherListItem
               dayOrTime={
-                pad(new Date(dayOrTime).getHours()) +
-                ":" +
-                pad(new Date(dayOrTime).getMinutes())
+                isHourly
+                  ? pad(new Date(dayOrTime).getHours()) +
+                    ":" +
+                    pad(new Date(dayOrTime).getMinutes())
+                  : constructDateInFormat(dayOrTime)
               }
               temp={temp}
               weather={weather}
@@ -65,6 +84,7 @@ export default function Weather({
               wind={wind}
               subObj={subObj}
               isHourly={isHourly}
+              tempMin={tempMin}
             />
           </>
         );

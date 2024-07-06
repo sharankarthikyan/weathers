@@ -41,7 +41,7 @@ export default function WeatherListItem({
             md:text-2xl md:font-bold
             lg:text-2xl lg:font-bold"
             >
-              {feelsLike}°
+              {Math.round(feelsLike)}°
             </div>
           </div>
         </div>
@@ -62,7 +62,7 @@ export default function WeatherListItem({
             md:text-2xl md:font-bold
             lg:text-2xl lg:font-bold"
             >
-              {wind}
+              {Math.round(wind)} km/h
             </div>
           </div>
         </div>
@@ -119,7 +119,7 @@ export default function WeatherListItem({
         md:text-2xl md:font-medium md:w-[15%]
         lg:text-2xl lg:font-medium lg:w-[15%]"
         >
-          {temp}°
+          {Math.round(temp)}°
         </div>
         <div
           className="text-sm font-medium w-[40%]
@@ -129,8 +129,17 @@ export default function WeatherListItem({
           {weather}
         </div>
         <div className="w-[15%] flex">
-          <Image src="/drop.svg" width="6" height="6" className="mr-1" />
-          <div className="flex items-center text-sm font-medium">
+          {isSmallDisplay ? (
+            <Image src="/drop.svg" width="6" height="6" className="mr-1" />
+          ) : (
+            <Image src="/drop.svg" width="8" height="8" className="mr-1" />
+          )}
+
+          <div
+            className="text-sm font-medium w-[40%]
+        md:text-2xl md:font-medium md:w-[40%]
+        lg:text-2xl lg:font-medium lg:w-[40%]"
+          >
             <div>{precipitation}%</div>
           </div>
         </div>
@@ -139,7 +148,7 @@ export default function WeatherListItem({
         md:text-2xl md:font-medium md:w-[15%]
         lg:text-2xl lg:font-medium lg:w-[15%]"
         >
-          {wind} km/h
+          {Math.round(wind)} km/h
         </div>
       </div>
       <div className="collapse-content flex justify-center">

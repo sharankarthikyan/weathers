@@ -5,7 +5,7 @@ export default function SecondBar() {
   const pathname = usePathname();
 
   return (
-    <div className="flex w-[100%] justify-center border-b border-[#ffffff3f] py-2">
+    <div className="flex w-[100%] justify-center border-b border-neutral py-2 bg-base-200">
       <div className="flex w-[80%] justify-around font-source-sans-pro uppercase">
         <Link
           href="/"

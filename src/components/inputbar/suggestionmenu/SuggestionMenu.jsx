@@ -47,9 +47,9 @@ export default function SuggestionMenu({ setOpenInput }) {
       {results?.length ? (
         <div
           ref={containerRef}
-          className="absolute mt-[3.2rem] w-[80%] bg-base-100 border border-gray-700 rounded-lg shadow-lg z-10
-          md:absolute md:mt-[4.2rem] md:w-[80%] md:bg-base-100 md:border md:border-gray-700 md:rounded-lg md:shadow-lg
-          lg:absolute lg:mt-[4.2rem] lg:w-[80%] lg:bg-base-100 lg:border lg:border-gray-700 lg:rounded-lg lg:shadow-lg"
+          className="absolute mt-[3.2rem] w-[80%] bg-base-200 border border-gray-700 rounded-lg shadow-lg z-10
+          md:absolute md:mt-[4.2rem] md:w-[80%] md:bg-base-200 md:border md:border-gray-700 md:rounded-lg md:shadow-lg
+          lg:absolute lg:mt-[4.2rem] lg:w-[80%] lg:bg-base-200 lg:border lg:border-gray-700 lg:rounded-lg lg:shadow-lg"
         >
           {results?.map((suggestion, index) => {
             return (

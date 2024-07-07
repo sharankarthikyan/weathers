@@ -9,14 +9,14 @@ export default function CurrentConditions() {
   const weatherData = useAppSelector((state) => state.weather.weatherData);
   return (
     <div
-      className="w-[90%] h-[20rem] bg-white rounded-2xl box-border
-    md:w-[90%] md:h-[30rem] md:bg-white md:rounded-2xl md:box-border
-    lg:w-[90%] lg:h-[30rem] lg:bg-white lg:rounded-2xl lg:box-border"
+      className="w-[90%] h-[20rem] bg-base-200 rounded-2xl box-border
+    md:w-[90%] md:h-[30rem] md:bg-base-200 md:rounded-2xl md:box-border
+    lg:w-[90%] lg:h-[30rem] lg:bg-base-200 lg:rounded-2xl lg:box-border"
     >
       <div
-        className={`font-source-sans-pro text-[#fff] h-[4rem] bg-gray-800 flex items-center rounded-t-2xl border-[1rem] border-gray-800
-      md:font-source-sans-pro md:text-[#fff] md:h-[6rem] md:bg-gray-800 md:flex md:items-center md:rounded-t-2xl md:border-[1rem] md:border-gray-800
-      lg:font-source-sans-pro lg:text-[#fff] lg:h-[6rem] lg:bg-gray-800 lg:flex lg:items-center lg:rounded-t-2xl lg:border-[1rem] lg:border-gray-800`}
+        className={`font-source-sans-pro text-primary-content h-[4rem] bg-primary flex items-center rounded-t-2xl border-[1rem] border-primary
+      md:font-source-sans-pro md:text-primary-content md:h-[6rem] md:bg-primary md:flex md:items-center md:rounded-t-2xl md:border-[1rem] md:border-primary
+      lg:font-source-sans-pro lg:text-primary-content lg:h-[6rem] lg:bg-primary lg:flex lg:items-center lg:rounded-t-2xl lg:border-[1rem] lg:border-primary`}
       >
         <span
           className="text-2xl font-extrabold capitalize
@@ -43,21 +43,21 @@ export default function CurrentConditions() {
       >
         <div className="flex flex-col justify-around">
           <div
-            className="font-dela-gothic-one text-[5rem] text-gray-900
+            className="font-dela-gothic-one text-[5rem] text-base-content
           md:font-dela-gothic-one md:text-[7rem]
           lg:font-dela-gothic-one lg:text-[7rem]"
           >
             {parseInt(weatherData?.current?.temperature_2m)}°
           </div>
           <div
-            className="font-dela-gothic-one text-[2rem] text-gray-700
+            className="font-dela-gothic-one text-[2rem] text-base-content
           md:font-dela-gothic-one md:text-[3rem]
           lg:font-dela-gothic-one lg:text-[3rem]"
           >
             {getWeatherDescription(weatherData?.current?.weather_code)}
           </div>
           <div
-            className="font-dela-gothic-one text-[2rem] text-gray-700
+            className="font-dela-gothic-one text-[2rem] text-base-content
           md:font-dela-gothic-one md:text-[3rem]
           lg:font-dela-gothic-one lg:text-[3rem]"
           >

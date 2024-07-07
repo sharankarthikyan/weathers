@@ -18,7 +18,7 @@ export default function Home() {
   const errorInWeatherFetch = useAppSelector((state) => state.weather.error);
 
   return (
-    <div className="flex items-center flex-col">
+    <div className="flex items-center flex-col h-[100vh]">
       <div
         className="mt-4 w-[90%] flex justify-center
   md:mt-4 md:w-[60%] md:flex md:justify-center

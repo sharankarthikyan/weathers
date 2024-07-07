@@ -127,7 +127,7 @@ export default function NavBar({ toggleInput }) {
   }, []);
 
   return (
-    <div className="navbar bg-base-100 sticky border-b border-[#ffffff3f]">
+    <div className="navbar bg-base-200 sticky border-b border-neutral">
       <div className="w-[25%] justify-start">
         {/* <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -148,7 +148,7 @@ export default function NavBar({ toggleInput }) {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-200 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
               <a>Item 1</a>
@@ -171,12 +171,12 @@ export default function NavBar({ toggleInput }) {
         </div> */}
         <Link
           href="/"
-          className="font-red-rose uppercase 
+          className="font-red-rose uppercase items-center
         btn btn-ghost text-xl hidden
-        md:btn md:btn-ghost md:text-xl md:block
-        lg:btn lg:btn-ghost lg:text-3xl lg:block"
+        md:btn md:btn-ghost md:text-xl md:flex
+        lg:btn lg:btn-ghost lg:text-3xl lg:flex"
         >
-          Babble weather
+          <div>Babble weather</div>
         </Link>
 
         <Link
@@ -234,7 +234,7 @@ export default function NavBar({ toggleInput }) {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-lg dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-lg dropdown-content bg-base-200 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
               <Link href="" className="text-[1.2rem]">

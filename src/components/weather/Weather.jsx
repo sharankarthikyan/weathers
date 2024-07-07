@@ -140,7 +140,7 @@ export default function Weather({
         md:pt-[1rem] md:pl-[1rem]
         lg:pt-[1rem] lg:pl-[1rem"
           >
-            <Link href={btnLink} className="btn btn-secondary text-[1rem]">
+            <Link href={btnLink} className="btn btn-neutral text-[1rem]">
               {btnText}
             </Link>
           </div>

@@ -13,15 +13,15 @@ export default function TodayDetailsCard() {
   return (
     <>
       <div
-        className="w-[90%] bg-white rounded-2xl box-border p-[1rem]
-    md:w-[90%] md:bg-white md:rounded-2xl md:box-border md:p-[1rem]
-    lg:w-[90%] lg:bg-white lg:rounded-2xl lg:box-border lg:p-[1rem]"
+        className="w-[90%] bg-base-200 rounded-2xl box-border p-[1rem]
+    md:w-[90%] md:bg-base-200 md:rounded-2xl md:box-border md:p-[1rem]
+    lg:w-[90%] lg:bg-base-200 lg:rounded-2xl lg:box-border lg:p-[1rem]"
       >
         <div className="flex flex-col">
           <div
-            className="font-source-sans-pro text-[1.4rem] font-extrabold text-gray-700
-            md:font-source-sans-pro md:text-[2.2rem] md:font-extrabold md:text-gray-700
-            lg:font-source-sans-pro lg:text-[2.2rem] lg:font-extrabold lg:text-gray-700"
+            className="font-source-sans-pro text-[1.4rem] font-extrabold text-base-content
+            md:font-source-sans-pro md:text-[2.2rem] md:font-extrabold md:text-base-content
+            lg:font-source-sans-pro lg:text-[2.2rem] lg:font-extrabold lg:text-base-content"
           >
             Weather Today in {locationData?.city},{" "}
             {locationData?.principalSubdivision
@@ -44,16 +44,16 @@ export default function TodayDetailsCard() {
                 lg:flex lg:flex-col lg:pl-[2rem] lg:pt-[2rem]"
               >
                 <div
-                  className="font-source-sans-pro text-[1.2rem] text-gray-700
-                  md:font-source-sans-pro md:text-[2rem] md:text-gray-700
-                  lg:font-source-sans-pro lg:text-[2rem] lg:text-gray-700"
+                  className="font-source-sans-pro text-[1.2rem] text-base-content
+                  md:font-source-sans-pro md:text-[2rem] md:text-base-content
+                  lg:font-source-sans-pro lg:text-[2rem] lg:text-base-content"
                 >
                   Feels Like
                 </div>
                 <div
-                  className="font-source-sans-pro text-[3.4rem] font-extrabold text-gray-700 leading-[2rem]
-                  md:font-source-sans-pro md:text-[6rem] md:font-extrabold md:text-gray-700 md:leading-[4rem]
-                  lg:font-source-sans-pro lg:text-[6rem] lg:font-extrabold lg:text-gray-700 lg:leading-[4rem]"
+                  className="font-source-sans-pro text-[3.4rem] font-extrabold text-base-content leading-[2rem]
+                  md:font-source-sans-pro md:text-[6rem] md:font-extrabold md:text-base-content md:leading-[4rem]
+                  lg:font-source-sans-pro lg:text-[6rem] lg:font-extrabold lg:text-base-content lg:leading-[4rem]"
                 >
                   {weatherData
                     ? parseInt(
@@ -65,15 +65,15 @@ export default function TodayDetailsCard() {
                     : ""}
                 </div>
               </div>
-              <div>Hi</div>
+              <div></div>
             </div>
             <div
-              className="flex flex-col w-[100%] justify-between text-gray-700 mt-8
-              md:flex md:flex-col md:w-[100%] md:justify-between md:text-gray-700 md:mt-8
-              lg:flex lg:flex-row lg:w-[100%] lg:justify-between lg:text-gray-700 lg:mt-8"
+              className="flex flex-col w-[100%] justify-between text-base-content mt-8
+              md:flex md:flex-col md:w-[100%] md:justify-between md:text-base-content md:mt-8
+              lg:flex lg:flex-row lg:w-[100%] lg:justify-between lg:text-base-content lg:mt-8"
             >
               <div
-                className="w-[100%]
+                className="w-[100%] border border-x-0 border-t-0 border-b-neutral
                 md:w-[100%]
                 lg:w-[45%]"
               >
@@ -88,7 +88,7 @@ export default function TodayDetailsCard() {
                     lg:flex lg:items-center"
                   >
                     <div
-                      className="w-[20%]
+                      className="w-[20%] 
                       md:w-[20%]
                       lg:w-[20%]"
                     >
@@ -116,10 +116,9 @@ export default function TodayDetailsCard() {
                     {parseInt(weatherData?.daily?.temperature_2m_min)}°
                   </div>
                 </div>
-                <div className="border-[.1rem]"></div>
               </div>
               <div
-                className="w-[100%] mt-3
+                className="w-[100%] mt-3 border border-x-0 border-t-0 border-b-neutral
                 md:w-[100%]
                 lg:w-[45%]"
               >
@@ -171,16 +170,15 @@ export default function TodayDetailsCard() {
                     {weatherData?.current?.visibility / 1000} km
                   </div>
                 </div>
-                <div className="border-[.1rem]"></div>
               </div>
             </div>
             <div
-              className="flex flex-col w-[100%] justify-between text-gray-700
-              md:flex md:w-[100%] md:justify-between md:text-gray-700 
-              lg:flex lg:flex-row lg:w-[100%] lg:justify-between lg:text-gray-700"
+              className="flex flex-col w-[100%] justify-between text-base-content
+              md:flex md:w-[100%] md:justify-between md:text-base-content 
+              lg:flex lg:flex-row lg:w-[100%] lg:justify-between lg:text-base-content"
             >
               <div
-                className="w-[100%] mt-3
+                className="w-[100%] mt-3 border border-x-0 border-t-0 border-b-neutral
                 md:w-[100%]
                 lg:w-[45%]"
               >
@@ -227,10 +225,9 @@ export default function TodayDetailsCard() {
                     {parseInt(weatherData?.current?.dew_point_2m)}°
                   </div>
                 </div>
-                <div className="border-[.1rem]"></div>
               </div>
               <div
-                className="w-[100%] mt-3
+                className="w-[100%] mt-3 border border-x-0 border-t-0 border-b-neutral
                 md:w-[100%]
                 lg:w-[45%]"
               >
@@ -267,16 +264,15 @@ export default function TodayDetailsCard() {
                     add {weatherData?.current?.wind_speed_10m} km/h
                   </div>
                 </div>
-                <div className="border-[.1rem]"></div>
               </div>
             </div>
             <div
-              className="flex flex-col w-[100%] justify-between text-gray-700
-              md:flex md:w-[100%] md:justify-between md:text-gray-700
-              lg:flex lg:flex-row lg:w-[100%] lg:justify-between lg:text-gray-700"
+              className="flex flex-col w-[100%] justify-between text-base-content 
+              md:flex md:w-[100%] md:justify-between md:text-base-content
+              lg:flex lg:flex-row lg:w-[100%] lg:justify-between lg:text-base-content"
             >
               <div
-                className="w-[100%] mt-3
+                className="w-[100%] mt-3 border border-x-0 border-t-0 border-b-neutral
                 md:w-[100%]
                 lg:w-[45%]"
               >
@@ -323,10 +319,9 @@ export default function TodayDetailsCard() {
                     {weatherData?.current?.surface_pressure} mb
                   </div>
                 </div>
-                <div className="border-[.1rem]"></div>
               </div>
               <div
-                className="w-[100%] mt-3
+                className="w-[100%] mt-3 border border-x-0 border-t-0 border-b-neutral
                 md:w-[100%]
                 lg:w-[45%]"
               >
@@ -363,7 +358,6 @@ export default function TodayDetailsCard() {
                     {weatherData?.current?.relative_humidity_2m}%
                   </div>
                 </div>
-                <div className="border-[.1rem]"></div>
               </div>
             </div>
           </div>

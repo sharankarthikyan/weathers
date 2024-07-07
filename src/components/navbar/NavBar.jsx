@@ -8,50 +8,21 @@ import { useMediaQuery } from "react-responsive";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fetchLocationData } from "@/store/locationState";
 import { fetchWeatherData } from "@/store/weatherState";
+import { Classic } from "@theme-toggles/react";
 
 export default function NavBar({ toggleInput }) {
+  const { theme, changeTheme } = useContext(ThemeContext);
+
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
   const dispatch = useAppDispatch();
-  const isSmallDisplay = useMediaQuery({ maxWidth: 640 });
-  const [menuPosition, setMenuPosition] = useState({ x: 0, y: 0 });
+  const [isToggled, setToggle] = useState(theme == "light" ? true : false);
+
   const locationData = useAppSelector((state) => state.location.locationData);
   const isLocationDataLoading = useAppSelector(
     (state) => state.location.isLoading
   );
   const error = useAppSelector((state) => state.location.error);
-  const { theme, changeTheme } = useContext(ThemeContext);
-  const weatherData = useAppSelector((state) => state.weather.weatherData);
-  const isWeatherDataLoading = useAppSelector(
-    (state) => state.weather.isLoading
-  );
-  const errorInWeatherFetch = useAppSelector((state) => state.weather.error);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleMenuClick = (event) => {
-    const rect = event.target.getBoundingClientRect();
-    if (isSmallDisplay) {
-      setMenuPosition({ x: rect.left - 40, y: rect.bottom + 2 });
-    } else {
-      setMenuPosition({ x: rect.left - 80, y: rect.bottom - 20 });
-    }
-    toggleMenu();
-  };
-
-  const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    if (typeof window !== "undefined") {
-      localStorage.setItem("theme", newTheme);
-    }
-    changeTheme(newTheme);
-  };
-
-  const handleMenuSelect = () => {
-    setIsOpen(false);
-  };
 
   const handleClickOutside = (event) => {
     if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -61,6 +32,16 @@ export default function NavBar({ toggleInput }) {
 
   const handleResize = () => {
     setIsOpen(false);
+  };
+
+  const handleThemeChange = () => {
+    if (!isToggled) {
+      changeTheme("light");
+      setToggle(!isToggled);
+    } else {
+      changeTheme("dark");
+      setToggle(!isToggled);
+    }
   };
 
   function requestLocation() {
@@ -222,6 +203,15 @@ export default function NavBar({ toggleInput }) {
         )}
       </div>
       <div className="w-[25%] justify-end">
+        <div>
+          <Classic
+            duration={750}
+            style={{ fontSize: "2.4rem" }}
+            toggled={isToggled}
+            toggle={handleThemeChange}
+          />
+        </div>
+
         <div className="dropdown dropdown-left dropdown-bottom">
           <div
             tabIndex={0}

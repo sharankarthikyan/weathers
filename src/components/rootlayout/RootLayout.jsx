@@ -3,6 +3,7 @@
 import { Inter } from "next/font/google";
 import ClientThemeWrapper from "@/context/ClientThemeWrapper";
 import { ThemeProvider } from "@/context/ThemeProvider";
+import "@theme-toggles/react/css/Classic.css";
 
 import "@fontsource-variable/red-rose";
 import "@fontsource/dela-gothic-one";
@@ -14,7 +15,6 @@ import { useRef, useState } from "react";
 import { makeStore } from "../../store/store";
 import { Provider } from "react-redux";
 import InputBar from "../inputbar/InputBar";
-import Alert from "../alert/Alert";
 
 const inter = Inter({ subsets: ["latin"] });
 

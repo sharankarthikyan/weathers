@@ -14,6 +14,7 @@ import { useRef, useState } from "react";
 import { makeStore } from "../../store/store";
 import { Provider } from "react-redux";
 import InputBar from "../inputbar/InputBar";
+import Alert from "../alert/Alert";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,7 +38,7 @@ export default function RootLayout({ children }) {
           <ClientThemeWrapper>
             <Provider store={storeRef.current}>
               <NavBar toggleInput={toggleInput} />
-              {openInput ? <InputBar /> : ""}
+              {openInput ? <InputBar setOpenInput={setOpenInput} /> : ""}
               <SecondBar />
               {children}
             </Provider>

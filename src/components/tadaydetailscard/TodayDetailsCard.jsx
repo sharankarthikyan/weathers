@@ -24,7 +24,9 @@ export default function TodayDetailsCard() {
             lg:font-source-sans-pro lg:text-[2.2rem] lg:font-extrabold lg:text-gray-700"
           >
             Weather Today in {locationData?.city},{" "}
-            {locationData?.principalSubdivision}
+            {locationData?.principalSubdivision
+              ? locationData?.principalSubdivision
+              : locationData?.country}
           </div>
           <div
             className="flex flex-col w-[100%]

@@ -78,7 +78,11 @@ export default function Home() {
           <SkeletonCard />
         ) : (
           <ForcastCard
-            cardTitle={`Today's Forcast for ${locationData?.city}, ${locationData?.principalSubdivision}`}
+            cardTitle={`Today's Forcast for ${locationData?.city}, ${
+              locationData?.principalSubdivision
+                ? locationData?.principalSubdivision
+                : locationData?.country
+            }`}
             list={temperatureTrends}
             btnLink="/hourbyhour"
             nextLink="Next 48 hours"

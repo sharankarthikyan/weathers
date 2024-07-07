@@ -31,7 +31,11 @@ export default function Home() {
             {weatherData ? (
               <Weather
                 cardTitle="10-Day Weather"
-                location={`${locationData?.city}, ${locationData?.principalSubdivision}`}
+                location={`${locationData?.city}, ${
+                  locationData?.principalSubdivision
+                    ? locationData?.principalSubdivision
+                    : locationData?.country
+                }`}
                 list={tenDayWeatherForcast(
                   weatherData?.daily?.time,
                   weatherData?.daily?.temperature_2m_max,

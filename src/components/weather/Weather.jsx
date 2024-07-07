@@ -47,18 +47,21 @@ export default function Weather({
 
   const constructListItem = () => {
     return list.map(
-      ({
-        dayOrTime,
-        temp,
-        weather,
-        precipitation,
-        wind,
-        subObj,
-        isHourly,
-        tempMin,
-      }) => {
+      (
+        {
+          dayOrTime,
+          temp,
+          weather,
+          precipitation,
+          wind,
+          subObj,
+          isHourly,
+          tempMin,
+        },
+        i
+      ) => {
         return (
-          <>
+          <div key={i + "_LIST_ITEM"}>
             {!isHourly || checkCurrAndPrevHrOnSameDay(dayOrTime) ? (
               ""
             ) : (
@@ -86,7 +89,7 @@ export default function Weather({
               isHourly={isHourly}
               tempMin={tempMin}
             />
-          </>
+          </div>
         );
       }
     );

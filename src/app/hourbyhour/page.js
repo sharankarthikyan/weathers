@@ -31,7 +31,11 @@ export default function Home() {
             {weatherData ? (
               <Weather
                 cardTitle="Hourly Weather"
-                location={`${locationData?.city}, ${locationData?.principalSubdivision}`}
+                location={`${locationData?.city}, ${
+                  locationData?.principalSubdivision
+                    ? locationData?.principalSubdivision
+                    : locationData?.country
+                }`}
                 list={hourlyWeatherForcast(
                   weatherData?.hourly?.time,
                   weatherData?.hourly?.temperature_2m,

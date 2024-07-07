@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setLocationData } from "@/store/locationState";
 
-export default function SuggestionMenu() {
+export default function SuggestionMenu({ setOpenInput }) {
   const dispatch = useAppDispatch();
   const searchData = useAppSelector((state) => state.search.searchData);
   const isSearchDataLoading = useAppSelector((state) => state.search.isLoading);
@@ -11,7 +11,6 @@ export default function SuggestionMenu() {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    console.log(searchData);
     if (!isSearchDataLoading && searchData) {
       setResults(searchData?.results?.slice(0, 3));
     }
@@ -36,9 +35,11 @@ export default function SuggestionMenu() {
       longitude: suggestion.longitude,
       city: suggestion.name,
       principalSubdivision: suggestion.admin1,
+      country: suggestion.country,
     };
     dispatch(setLocationData(data));
     setResults([]);
+    setOpenInput(false);
   };
 
   return (

@@ -23,7 +23,10 @@ export default function CurrentConditions() {
         md:text-4xl md:font-extrabold md:pl-8 md:capitalize
         lg:text-4xl lg:font-extrabold lg:pl-8 lg:capitalize"
         >
-          {locationData?.city}, {locationData?.principalSubdivision}
+          {locationData?.city},{" "}
+          {locationData?.principalSubdivision
+            ? locationData?.principalSubdivision
+            : locationData?.country}
         </span>
         {/* <span
                   className="text-2xl ml-2 font-light

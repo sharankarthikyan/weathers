@@ -18,17 +18,5 @@ export default function sitemap() {
       changeFrequency: "daily",
       priority: 0.5,
     },
-    {
-      url: "https://weather.sharankarthikeyan.com/daily/",
-      lastModified: new Date(),
-      changeFrequency: "daily",
-      priority: 0.5,
-    },
-    {
-      url: "https://sharankarthikeyan.com/monthly/",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
   ];
 }

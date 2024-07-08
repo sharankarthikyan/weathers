@@ -3,20 +3,21 @@
 import Link from "next/link";
 import { LocationMarkerIcon } from "@heroicons/react/outline";
 import { useContext, useEffect, useRef, useState } from "react";
-import { ThemeContext } from "@/context/ThemeProvider";
-import { useMediaQuery } from "react-responsive";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { fetchLocationData } from "@/store/locationState";
 import { fetchWeatherData } from "@/store/weatherState";
 import { Classic } from "@theme-toggles/react";
+import { useTheme } from "next-themes";
 
 export default function NavBar({ toggleInput }) {
-  const { theme, changeTheme } = useContext(ThemeContext);
+  const { setTheme, resolvedTheme } = useTheme();
 
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
   const dispatch = useAppDispatch();
-  const [isToggled, setToggle] = useState(theme == "light" ? true : false);
+  const [isToggled, setToggle] = useState(
+    resolvedTheme == "light" ? true : false
+  );
 
   const locationData = useAppSelector((state) => state.location.locationData);
   const isLocationDataLoading = useAppSelector(
@@ -36,10 +37,10 @@ export default function NavBar({ toggleInput }) {
 
   const handleThemeChange = () => {
     if (!isToggled) {
-      changeTheme("light");
+      setTheme("light");
       setToggle(!isToggled);
     } else {
-      changeTheme("dark");
+      setTheme("dark");
       setToggle(!isToggled);
     }
   };

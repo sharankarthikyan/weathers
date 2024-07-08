@@ -2,7 +2,7 @@
 
 import { Inter } from "next/font/google";
 import ClientThemeWrapper from "@/context/ClientThemeWrapper";
-import { ThemeProvider } from "@/context/ThemeProvider";
+import { TProvider } from "@/context/ThemeProvider";
 import "@theme-toggles/react/css/Classic.css";
 
 import "@fontsource-variable/red-rose";
@@ -32,9 +32,9 @@ export default function RootLayout({ children }) {
   }
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <ThemeProvider>
+        <TProvider>
           <ClientThemeWrapper>
             <Provider store={storeRef.current}>
               <NavBar toggleInput={toggleInput} />
@@ -43,7 +43,7 @@ export default function RootLayout({ children }) {
               {children}
             </Provider>
           </ClientThemeWrapper>
-        </ThemeProvider>
+        </TProvider>
       </body>
     </html>
   );

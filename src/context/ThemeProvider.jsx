@@ -1,35 +1,18 @@
 "use client";
 
 import { createContext, useState } from "react";
+import { ThemeProvider } from "next-themes";
 
 export const ThemeContext = createContext();
 
-export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("dark");
-  const [isMounted, setIsMounted] = useState(false);
-
-  useState(() => {
-    setIsMounted(true);
-    if (typeof window !== "undefined") {
-      const storedTheme = localStorage.getItem("theme") || "dark";
-      setTheme(storedTheme);
-    }
-  }, []);
-
-  if (!isMounted) {
-    return <>Loading...</>;
-  }
-
-  const changeTheme = (theme) => {
-    setTheme(theme);
-    if (typeof window !== "undefined") {
-      localStorage.setItem("theme", theme);
-    }
-  };
-
+export const TProvider = ({ children }) => {
   return (
-    <ThemeContext.Provider value={{ theme, changeTheme }}>
+    <ThemeProvider
+      storageKey="theme"
+      defaultTheme="dark"
+      attribute="data-theme"
+    >
       {children}
-    </ThemeContext.Provider>
+    </ThemeProvider>
   );
 };

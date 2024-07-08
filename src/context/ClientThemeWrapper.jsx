@@ -1,9 +1,15 @@
 "use client";
 
-import { useContext } from "react";
-import { ThemeContext } from "./ThemeProvider";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function ClientThemeWrapper({ children }) {
-  const { theme } = useContext(ThemeContext);
-  return <div data-theme={theme}>{children}</div>;
+  const { setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
+
+  return <div data-theme={resolvedTheme}>{children}</div>;
 }

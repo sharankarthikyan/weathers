@@ -1,9 +1,6 @@
 "use client";
 
-import { createContext, useState } from "react";
 import { ThemeProvider } from "next-themes";
-
-export const ThemeContext = createContext();
 
 export const TProvider = ({ children }) => {
   return (

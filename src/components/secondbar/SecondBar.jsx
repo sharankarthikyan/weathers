@@ -6,8 +6,8 @@ export default function SecondBar({ openInput }) {
 
   return (
     <div
-      className={`flex w-[100%] justify-center border-b border-neutral py-2 bg-base-200 sticky ${
-        openInput ? "top-[8.1rem]" : "top-[4.1rem]"
+      className={`flex w-[100%] justify-center border-neutral py-2 bg-base-200 sticky ${
+        openInput ? "top-[8.1rem] border" : "top-[4.1rem] border-b"
       }`}
     >
       <div className="flex w-[80%] justify-around font-source-sans-pro uppercase">

@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
             <Provider store={storeRef.current}>
               <NavBar toggleInput={toggleInput} />
               {openInput ? <InputBar setOpenInput={setOpenInput} /> : ""}
-              <SecondBar />
+              <SecondBar openInput={openInput} />
               {children}
             </Provider>
           </ClientThemeWrapper>

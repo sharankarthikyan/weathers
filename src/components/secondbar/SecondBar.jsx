@@ -1,11 +1,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function SecondBar() {
+export default function SecondBar({ openInput }) {
   const pathname = usePathname();
 
   return (
-    <div className="flex w-[100%] justify-center border-b border-neutral py-2 bg-base-200">
+    <div
+      className={`flex w-[100%] justify-center border-b border-neutral py-2 bg-base-200 sticky ${
+        openInput ? "top-[8.1rem]" : "top-[4.1rem]"
+      }`}
+    >
       <div className="flex w-[80%] justify-around font-source-sans-pro uppercase">
         <Link
           href="/"

@@ -50,7 +50,7 @@ export default function InputBar({ setOpenInput }) {
   };
 
   return (
-    <div className="w-[100%] flex justify-between">
+    <div className="w-[100%] flex justify-between sticky top-[4.1rem]">
       {showAlert && (
         <Alert
           type="alert-error"

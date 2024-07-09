@@ -109,7 +109,7 @@ export default function NavBar({ toggleInput }) {
   }, []);
 
   return (
-    <div className="navbar bg-base-200 sticky border-b border-neutral">
+    <div className="navbar bg-base-200 border border-b-neutral sticky top-0">
       <div className="w-[25%] justify-start">
         {/* <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

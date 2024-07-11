@@ -18,5 +18,11 @@ export default function sitemap() {
       changeFrequency: "daily",
       priority: 0.5,
     },
+    {
+      url: "https://weather.sharankarthikeyan.com/favicon.ico",
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.5,
+    },
   ];
 }

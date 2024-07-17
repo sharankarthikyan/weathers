@@ -75,7 +75,7 @@ export default function InputBar({ setOpenInput }) {
       >
         Search
       </div>
-      <SuggestionMenu setOpenInput={setOpenInput} />
+      {/* <SuggestionMenu setOpenInput={setOpenInput} /> */}
     </div>
   );
 }

@@ -15,6 +15,7 @@ import { useRef, useState } from "react";
 import { makeStore } from "../../store/store";
 import { Provider } from "react-redux";
 import InputBar from "../inputbar/InputBar";
+import Footer from "../footer/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,7 +34,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.className}`}>
         <TProvider>
           <ClientThemeWrapper>
             <Provider store={storeRef.current}>
@@ -41,6 +42,7 @@ export default function RootLayout({ children }) {
               {openInput ? <InputBar setOpenInput={setOpenInput} /> : ""}
               <SecondBar openInput={openInput} />
               {children}
+              <Footer />
             </Provider>
           </ClientThemeWrapper>
         </TProvider>

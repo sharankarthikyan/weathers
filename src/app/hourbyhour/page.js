@@ -25,7 +25,7 @@ export default function Home() {
   lg:mt-4 lg:w-[60%] lg:flex lg:justify-center"
       >
         {isLocationDataLoading || isWeatherDataLoading ? (
-          <SkeletonCard />
+          <SkeletonCard height="100vh" />
         ) : (
           <>
             {weatherData ? (

@@ -11,5 +11,9 @@ export default function ClientThemeWrapper({ children }) {
 
   if (!mounted) return null;
 
-  return <div data-theme={resolvedTheme}>{children}</div>;
+  return (
+    <div data-theme={resolvedTheme} className="flex flex-col min-h-screen">
+      {children}
+    </div>
+  );
 }

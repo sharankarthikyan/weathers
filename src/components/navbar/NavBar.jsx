@@ -109,7 +109,7 @@ export default function NavBar({ toggleInput }) {
   }, []);
 
   return (
-    <div className="navbar bg-base-200 border border-neutral sticky top-0 z-20">
+    <div className="navbar bg-base-200 border-b border-neutral sticky top-0 z-20">
       <div className="w-[25%] justify-start">
         {/* <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -223,7 +223,7 @@ export default function NavBar({ toggleInput }) {
           >
             °C
           </div>
-          <ul
+          {/* <ul
             tabIndex={0}
             className="menu menu-lg dropdown-content bg-base-200 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
@@ -237,7 +237,7 @@ export default function NavBar({ toggleInput }) {
                 °F
               </Link>
             </li>
-          </ul>
+          </ul> */}
         </div>
       </div>
     </div>

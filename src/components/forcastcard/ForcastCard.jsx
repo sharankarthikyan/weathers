@@ -63,7 +63,7 @@ export default function ForcastCard({
     <>
       <Link
         href={btnLink}
-        className="w-[90%] bg-base-200 rounded-2xl box-border p-[1rem]
+        className="w-[90%] bg-base-200 rounded-2xl box-border p-[1rem] mb-2
     md:w-[90%] md:bg-base-200 md:rounded-2xl md:box-border md:p-[1rem]
     lg:w-[90%] lg:bg-base-200 lg:rounded-2xl lg:box-border lg:p-[1rem]"
       >

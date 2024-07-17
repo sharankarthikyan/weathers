@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import CurrentConditions from "@/components/currentconditions/CurrentConditions";
 import ForcastCard from "@/components/forcastcard/ForcastCard";
-import TodayDetailsCard from "@/components/tadaydetailscard/TodayDetailsCard";
+import TodayDetailsCard from "@/components/todaydetailscard/TodayDetailsCard";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {
   findFiveDaysForcast,
